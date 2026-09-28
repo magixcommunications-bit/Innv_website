@@ -1,0 +1,20 @@
+.about-section {
+  background: radial-gradient(
+      650% 200% at 50% 50%,
+      #9de1a52b 2.74%,
+      #f0f4f5 10.54%
+    ),
+    linear-gradient(180deg, #fff 0%, #f0f4f5 100%);
+}
+
+.feature-wrapper {
+  background: linear-gradient(180deg, #10171d 0%, #272e38 100%);
+}
+.ptech-shaft-wrapper {
+  background: radial-gradient(
+      680% 300% at 50% 80%,
+      #9de1a52b 2.74%,
+      #fff 10.54%
+    ),
+    linear-gradient(180deg, #fff 0%, #fff 100%);
+}

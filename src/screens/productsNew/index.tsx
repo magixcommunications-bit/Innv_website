@@ -1,0 +1,8 @@
+export { default as ProductEternia } from './eternia'
+export { default as ProductEterniaNexa } from './eterniaNexa'
+export { default as ProductEterniaBrio } from './eterniaBrio'
+export { default as ProductSiroflex } from './siroflex'
+export { default as ProductSiroflexCurve } from './siroflexCurve'
+export { default as ProductSiroflexPlus } from './siroflexPlus'
+export { default as ProductEterniaSelect } from './eterniaSelect'
+export { default as ProductInsignia } from './insignia'

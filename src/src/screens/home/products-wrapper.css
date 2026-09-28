@@ -1,0 +1,191 @@
+.products-wrapper {
+  /* background: url('../../assets/home/product_section/bg_mesh.jpg'); */
+  background-color: #E9E9E9;
+  background-size: 120% 120%;
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+}
+
+.products-wrapper .wrapper {
+  grid-template-columns: auto 400px;
+}
+
+@media screen and (min-width: 70px) {
+  .products-wrapper .wrapper {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .products-wrapper .wrapper {
+    grid-template-columns: auto 400px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .products-wrapper .wrapper {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .products-wrapper .wrapper {
+    grid-template-columns: 310px auto 400px;
+  }
+
+  .tab-wrapper-tab {
+    display: none !important;
+  }
+
+  .tab-wrapper {
+    display: block !important;
+  }
+}
+
+.products-wrapper .variantLogos-enter {
+  opacity: 0;
+}
+
+.products-wrapper .variantLogos-enter-active {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
+}
+
+.products-wrapper .variantLogos-exit {
+  opacity: 1;
+}
+
+.products-wrapper .variantLogos-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.products-wrapper .description-enter {
+  opacity: 0;
+}
+
+.products-wrapper .description-enter-active {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
+}
+
+.products-wrapper .description-exit {
+  opacity: 1;
+}
+
+.products-wrapper .description-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.products-wrapper .imgwrapper-enter {
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.products-wrapper .imgwrapper-enter-active {
+  opacity: 1;
+  filter: blur(0);
+  transition: all 300ms ease-in-out;
+}
+
+.products-wrapper .imgwrapper-exit {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.products-wrapper .imgwrapper-exit-active {
+  transition: all 300ms ease-in-out;
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.products-wrapper .desc-wrapper h4,
+.products-wrapper .desc-wrapper h3 {
+  animation: appear 300ms ease-in-out forwards;
+}
+
+.products-wrapper .desc-wrapper h6 {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 100ms;
+}
+
+.products-wrapper .desc-wrapper li:nth-child(1) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 200ms;
+}
+
+.products-wrapper .desc-wrapper li:nth-child(2) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 250ms;
+}
+
+.products-wrapper .desc-wrapper li:nth-child(3) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 300ms;
+}
+.products-wrapper .desc-wrapper li:nth-child(3) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 350ms;
+}
+
+.products-wrapper .desc-wrapper button {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 300ms;
+}
+
+.products-wrapper .desc-wrapper a {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 400ms;
+}
+
+.products-wrapper .variant-text {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 50ms;
+}
+
+.products-wrapper .logo-wrapper article:nth-child(1) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 200ms;
+}
+
+.products-wrapper .logo-wrapper article:nth-child(2) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 100ms;
+}
+
+.products-wrapper .logo-wrapper article:nth-child(3) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 0ms;
+}
+
+.products-wrapper .logo-wrapper article:nth-child(4) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 100ms;
+}
+
+.products-wrapper .logo-wrapper article:nth-child(5) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 200ms;
+}
+.products-wrapper .logo-wrapper article:nth-child(6) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 200ms;
+}
+
+.products-wrapper .logo-wrapper button {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 350ms;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

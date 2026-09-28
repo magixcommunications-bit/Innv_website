@@ -1,0 +1,32 @@
+.compliance-chart tr td,
+.compliance-chart tr th {
+  @apply py-1.5 px-3 lg:px-4 2xl:py-2
+}
+
+.compliance-chart tr th:first-child,
+.compliance-chart tr td:first-child {
+  /* padding-left: 2rem; */
+  @apply px-4 whitespace-nowrap text-left lg:pl-8 border-transparent border-collapse
+}
+
+.compliance-chart tr th:first-child::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 2px;
+  width: 101%;
+  background: #000;
+}
+
+
+.compliance-chart tr th:first-child::before,
+.compliance-chart tr td:first-child::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: #000;
+}

@@ -1,0 +1,24 @@
+.blue-background-wrapper {
+    background-image: url('assets/bg-overlay/ellipse-bg.webp'),
+        linear-gradient(180deg, #2660DD 0%, #084DE1 100%), linear-gradient(136deg, #0F73BA 33.82%, #0036D6 135.84%);
+    background-position: top 20px center, top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.orange-gradient {
+    background: linear-gradient(132deg, #FEC89A 54.75%, #fdb270 108.01%), linear-gradient(180deg, #F0F4F5 23.59%, #FFF 100%), #FFF;
+}
+
+.blue-gradient {
+    background: linear-gradient(136deg, #0F73BA 33.82%, #0036D6 135.84%), linear-gradient(180deg, #0F73BA 0%, #0036D6 130.12%), #F69A4D;
+}
+
+.black-gradient {
+    background: linear-gradient(180deg, #10171D 0%, #272E38 100%);
+}
+
+.pinnacle-versatility {
+    background: linear-gradient(163deg, rgba(217, 217, 217, 0.30) -39.7%, rgba(217, 217, 217, 0.00) 88.06%);
+    /* backdrop-filter: blur(23px); */
+}

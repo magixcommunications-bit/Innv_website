@@ -1,0 +1,26 @@
+.card-gradient {
+  background: linear-gradient(314deg, #FFF -1.72%, #FFECDC 100%);
+  backdrop-filter: blur(37px);
+}
+
+.services-section .services-carousel-image-enter {
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.services-section .services-carousel-image-enter-active {
+  opacity: 1;
+  filter: blur(0);
+  transition: all 300ms ease-in-out;
+}
+
+.services-section .services-carousel-image-exit {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.services-section .services-carousel-image-exit-active {
+  transition: all 300ms ease-in-out;
+  filter: blur(20px);
+  opacity: 0;
+}

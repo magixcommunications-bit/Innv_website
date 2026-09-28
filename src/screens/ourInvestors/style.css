@@ -1,0 +1,15 @@
+.ndfHFb-c4YZDc-Wrql6b {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+#pdf-wrapper canvas {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 786px) {
+  #pdf-wrapper canvas {
+    width: 90%;
+  }
+}

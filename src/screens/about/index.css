@@ -1,0 +1,95 @@
+@media screen and (min-width: 768px) {
+  .timeline-wrapper {
+    grid-template-columns: 110px auto 120px;
+  }
+
+  .box-top {
+    width: 110px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .timeline-wrapper {
+    grid-template-columns: 200px auto 200px;
+  }
+
+  .box-top {
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .timeline-wrapper {
+    grid-template-columns: 200px auto 250px;
+  }
+}
+
+.about-page-wrapper .vision-wrapper {
+  background: url('assets/about/vision/innovating_gradients.svg'),
+    linear-gradient(164deg, #FEC89A 11.1%, #ffb777 128.9%),
+    url('assets/bg-overlay/orange_gradient_bg.webp');
+  background-size: 100% auto, 73% 650px, 100% auto;
+  background-origin: center 70%, right bottom, center center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+@media screen and (max-width: 1536px) {
+  .about-page-wrapper .vision-wrapper {
+    background-size: 100% auto, 85% 550px, 100% auto;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .about-page-wrapper .vision-wrapper {
+    background-size: 100% auto, 85% 500px, 100% auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-page-wrapper .vision-wrapper {
+    background-size: 100% 100%, 100% 400px, 100% auto;
+  }
+}
+
+.about-page-wrapper .team-wrapper {
+  background-image: url('assets/bg-overlay/ellipse-bg.webp'),
+    linear-gradient(180deg, #E9E9E9 0%, #d6d6d6 100%);
+  background-position: top 20px center, top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@keyframes scaleandappear {
+  from {
+    transform: scale(0.98);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.about-page-wrapper .title-active h3,
+.about-page-wrapper .mission-active h3,
+.about-page-wrapper .team-active h3 {
+  animation: slideandappear 700ms ease-in-out forwards;
+}
+
+.about-page-wrapper .team-active .btn-wrapper {
+  animation: slideandappear 700ms ease-in-out forwards;
+  animation-delay: 80ms;
+}
+
+.about-page-wrapper .team-active .img-wrapper {
+  animation: scaleandappear 700ms ease-in-out forwards;
+  animation-delay: 400ms;
+}
+
+.about-page-wrapper .title-active h6,
+.about-page-wrapper .mission-active h6,
+.about-page-wrapper .team-active h6 {
+  animation: slideandappear 700ms ease-in-out forwards;
+  animation-delay: 80ms;
+}

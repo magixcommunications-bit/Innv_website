@@ -1,0 +1,28 @@
+@media screen and (max-width: 1280px) {
+  .awards-wrapper {
+    background-size: 100% auto, 85% 500px, 100% auto;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .awards-wrapper {
+    background-size: 100% 100%, 100% 400px, 100% auto;
+  }
+}
+
+/* For swiper - Section 5 */
+.resource-page-carousel .swiper-slide-prev,
+.resource-page-carousel .swiper-slide-next {
+  opacity: 0.4;
+  transition: all ease 1s;
+}
+
+.resource-page-carousel>.swiper-slide-active {
+  position: relative;
+}
+
+.resource-page-carousel .swiper-button-prev::after,
+.resource-page-carousel .swiper-button-next::after {
+  display: none;
+}

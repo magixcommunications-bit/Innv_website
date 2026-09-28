@@ -1,0 +1,440 @@
+import React, { useRef } from 'react'
+// import divider from 'assets/home/banner/divider.svg'
+// import logo from 'assets/home/banner/F&S.svg'
+// import videoBg from 'assets/home/banner/banner_bg.mp4'
+// import desktopPoster from 'assets/home/banner/poster.png'
+// import mobilePoster from 'assets/home/banner/poster_mobile.png'
+import banner_3_product from 'assets/home/banner/banner-3-product.webp'
+import premier_elite from 'assets/home/product_section/vaiants/cath/cath-logo-01.svg'
+import frostAndSullivan from 'assets/home/banner/new/frost-&-sullivan.png'
+import bestBrands from 'assets/home/banner/new/best-brands.png'
+import GreatPlaceToWork from 'assets/home/banner/new/great-place-to-work.webp'
+// import button from 'assets/home/banner/new/button.svg'
+
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { A11y, Autoplay, Navigation, Pagination } from 'swiper'
+
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { CarouselBtn, MasterBtn } from 'atoms/buttons'
+import { useNavigate } from 'react-router-dom'
+import { extraClasses } from 'organisms/carousel'
+import { useAdmin } from 'store/store'
+
+export default function Banner() {
+  const sectionRef = useRef<any>(null)
+  const navigate = useNavigate()
+  const { homeData } = useAdmin()
+
+  return (
+    <>
+      <section
+        ref={sectionRef}
+        className="home-banner-main h-screen overflow-hidden relative min-h-[700px] max-h-[600px] lg:max-h-[700px] xl:max-h-[none]"
+      >
+        {homeData.BANNER.length === 0 ? null : (
+          <>
+            <Swiper
+              className="relative h-full select-none homepage-banner-pagination font-regular cursor-grab"
+              navigation={{
+                prevEl: '.banner-swiper-prev',
+                nextEl: '.banner-swiper-next',
+              }}
+              keyboard={{
+                enabled: true,
+                onlyInViewport: false,
+              }}
+              loop
+              preventInteractionOnTransition
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+              initialSlide={1}
+              pagination={{
+                clickable: true,
+                renderBullet: function (index, className) {
+                  if (homeData.BANNER.length) {
+                    return `<span class="${className}">
+            <span>${homeData.BANNER[index]?.statusBarText}</span>
+              <em></em>
+              <i></i>
+              <b></b>
+              </span> 
+              `
+                  }
+                },
+              }}
+              speed={1000}
+              modules={[Pagination, Navigation, Autoplay, A11y]}
+            >
+              {homeData.BANNER.map((banner) => {
+                return (
+                  <SwiperSlide
+                    style={{
+                      backgroundImage: `url(${
+                        window.innerWidth > 768
+                          ? banner.backgroundImageDesktop
+                          : banner.backgroundImageMobile
+                      })`,
+                    }}
+                    className={`bg-center sm:bg-[0px_-100px] bg-cover md:bg-[60%_0%] lg:bg-center bg-no-repeat h-full relative overflow-hidden flex flex-col justify-end md:justify-center`}
+                  >
+                    <div className="flex items-center flex-col-reverse md:flex-row min-[1800px]:gap-28">
+                      <div
+                        className="w-container pb-12 md:max-w-[19rem] lg:max-w-sm xl:max-w-md 2xl:max-w-[30rem] 
+                      md:ml-6 lg:ml-[10%] xsl:ml-[12%] 2xl:ml-[15%]"
+                      >
+                        {banner.logoImage.length === 0 ? null : (
+                          <img
+                            className="h-16 text-appear-anim lg:h-20 xl:h-auto"
+                            src={banner.logoImage as string}
+                            alt="logo"
+                          />
+                        )}
+
+                        <h3
+                          className="text-appear-anim-delayed font-regular mt-2 xl:mt-3 
+                      w-full text-xl md:text-2xl xl:text-3xl 2xl:text-[34px]"
+                        >
+                          {banner.heading}
+                        </h3>
+                        <div className="pt-4 md:pt-8 2xl:pt-12 text-appear-anim-delayed">
+                          <MasterBtn
+                            type="button"
+                            color="orange"
+                            text="Know More"
+                            size="base"
+                            extraClasses=""
+                            onClick={() => {
+                              navigate(banner.link)
+                            }}
+                          />
+                        </div>
+                      </div>
+                      {banner.productImage.length !== 0 ? (
+                        <div
+                          className="md:mr-6 lg:mr-[8%] 2xl:mr-[15%] xsl:mr-[12%] px-4
+                      h-80 md:h-96 lg:h-[400px] xl:h-[500px] xsl:h-[400px] xxl:h-auto"
+                        >
+                          <img
+                            className="object-contain w-full h-full"
+                            src={banner.productImage as string}
+                            alt="product"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+                  </SwiperSlide>
+                )
+              })}
+              {/* <SwiperSlide
+        className="bg-[url(assets/home/banner/banner-1-mobile.webp)] 
+      md:bg-[url(assets/home/banner/banner-1.webp)] bg-center sm:bg-[0px_-100px] bg-cover md:bg-[60%_0%] lg:bg-center 
+      bg-no-repeat  h-full relative overflow-hidden flex flex-col justify-end md:justify-center"
+      >
+        <div
+          className="w-container pb-12 md:max-w-[19rem] md:ml-6 lg:ml-[10%] lg:max-w-sm xl:max-w-md xsl:ml-[12%] 
+        2xl:ml-[15%] 2xl:max-w-[30rem]"
+        >
+          <img
+            className="h-16 text-appear-anim lg:h-20 xl:h-auto"
+            src={premier_elite}
+            alt="Premier elite logo"
+          />
+          <h3 className="text-appear-anim-delayed font-regular mt-2 xl:mt-3 w-full text-xl md:text-2xl xl:text-3xl 2xl:text-[34px]">
+            Experience the Unmatched Flexibility of{' '}
+            <span className="font-medium">Operating Space</span> and{' '}
+            <span className="font-medium">Deepest Angles</span> on a{' '}
+            <span className="text-[#F78E28] font-medium">
+              Floor Mounted Cath Lab
+            </span>
+          </h3>
+          <div className="pt-4 md:pt-8 2xl:pt-12 text-appear-anim-delayed">
+            <MasterBtn
+              type="button"
+              color="orange"
+              text="Know More"
+              size="base"
+              extraClasses=""
+              onClick={() => {
+                navigate('/products/cath-labs/premier-elite')
+              }}
+            />
+          </div>
+        </div>
+      </SwiperSlide>
+
+      <SwiperSlide
+        className="bg-[url(assets/home/banner/banner-2.webp)] bg-cover bg-center bg-no-repeat 
+      min-h-full h-full relative flex items-center justify-center px-3"
+      >
+        <div
+          className="flex flex-col-reverse gap-10 md:flex-row md:gap-8 lg:gap-24 xl:gap-28 xsl:gap-36 2xl:gap-48"
+        >
+          <div className="mt-3">
+            <h3 className="text-3xl font-medium text-orange text-appear-anim xl:text-4xl">
+              5,00,000+
+            </h3>
+            <h4 className="font-medium text-2xl xl:text-[34px] text-appear-anim-delayed ">
+              lives touched with <br /> cardiac care solutions
+            </h4>
+            <div className="pt-4 lg:pt-8 2xl:pt-12 text-appear-anim-delayed">
+              <MasterBtn
+                type="button"
+                color="orange"
+                text="Know More"
+                size="base"
+                extraClasses=""
+                onClick={() => {
+                  navigate('/awards-and-recognitions')
+                }}
+              />
+            </div>
+          </div>
+          <div className="z-100 relative grid grid-cols-[auto_auto_auto] gap-8 sm:gap-12 md:gap-8 lg:gap-8 
+          place-content-center">
+            <img
+              src={GreatPlaceToWork}
+              alt="Great Place To Work award"
+              className="w-auto h-20 sm:h-24 md:h-28 xl:h-32 2xl:h-44"
+            />
+            <img
+              src={frostAndSullivan}
+              alt="Frost & Sullivan - Company of the Year award"
+              className="w-auto h-16 my-auto sm:h-20 xl:h-24 2xl:h-28 "
+            />
+            <img
+              src={bestBrands}
+              alt="Best Brands award 2023"
+              className="w-auto h-20 sm:h-24 md:h-28 xl:h-32 2xl:h-44 "
+            />
+          </div>
+        </div>
+      </SwiperSlide> */}
+
+              {/* <SwiperSlide className="bg-[url(assets/home/banner/banner-3.webp)] bg-cover bg-center bg-no-repeat min-h-full 
+      h-full relative flex items-center justify-center">
+        <div className="flex items-center md:flex-row flex-col min-[1800px]:gap-28 ">
+          <img
+            className="h-80 md:h-96 lg:h-[460px] xl:h-[600px] xsl:h-auto"
+            src={banner_3_product}
+            alt="Eternia cross section view"
+          />
+          <div className="md:max-w-sm w-container-sm xl:max-w-lg 2xl:max-w-xl xl:-ml-10 2xl:ml-0">
+            <svg
+              className="max-h-7 md:max-h-10 max-w-fit xl:max-w-[none] xl:max-h-[none] text-appear-anim"
+              xmlns="http://www.w3.org/2000/svg"
+              width="232"
+              height="53"
+              viewBox="0 0 232 53"
+              fill="none"
+            >
+              <path
+                d="M216.682 23.2564L210.578 8.89275L204.332 23.2564H216.682ZM217.434 25.1891H203.518L201.077 30.8044C200.467 32.1878 200.182 33.2051 200.182 33.8968C200.182 34.4258 200.446 34.9141 200.955 35.321C201.484 35.7279 202.603 35.9924 204.332 36.1348V37.1113H193.02V36.1348C194.526 35.8703 195.482 35.5244 195.93 35.0972C196.825 34.263 197.822 32.5541 198.92 29.9906L211.575 0.734375H212.491L225.003 30.3161C226 32.6965 226.915 34.2427 227.749 34.9344C228.563 35.6465 229.723 36.0534 231.188 36.1348V37.1113H217.007V36.1348C218.431 36.0737 219.408 35.8296 219.916 35.4227C220.425 35.0362 220.669 34.5275 220.669 33.9579C220.669 33.1847 220.303 31.9844 219.611 30.3161L217.434 25.2095V25.1891ZM191.271 36.1348V37.1113H175.869V36.1348H177.151C178.636 36.1348 179.715 35.7075 180.386 34.853C180.813 34.3037 181.037 32.9406 181.037 30.8247V7.8348C181.037 6.04444 180.915 4.84408 180.691 4.27442C180.508 3.82682 180.142 3.46061 179.613 3.15544C178.84 2.72819 178.026 2.52474 177.171 2.52474H175.89V1.54818H191.291V2.52474H189.989C188.524 2.52474 187.466 2.95199 186.795 3.80648C186.347 4.37614 186.123 5.71892 186.123 7.8348V30.8044C186.123 32.5947 186.245 33.7951 186.469 34.3648C186.652 34.8124 187.019 35.1786 187.588 35.4837C188.341 35.911 189.155 36.1144 190.009 36.1144H191.311L191.271 36.1348ZM134.589 1.54818H144.335L166.307 28.2206V7.71273C166.307 5.53581 166.063 4.15235 165.575 3.62337C164.924 2.89095 163.886 2.52474 162.462 2.52474H161.221V1.54818H173.733V2.52474H172.451C170.926 2.52474 169.847 2.97233 169.217 3.88786C168.83 4.45752 168.647 5.71892 168.647 7.71273V37.681H167.691L143.989 9.05551V30.9671C143.989 33.1441 144.233 34.5072 144.701 35.0565C145.372 35.7889 146.41 36.1551 147.814 36.1551H149.075V37.1317H136.563V36.1551H137.804C139.35 36.1551 140.428 35.7075 141.079 34.792C141.466 34.2427 141.669 32.961 141.669 30.9671V6.2072C140.632 5.00684 139.838 4.21338 139.289 3.82682C138.74 3.44027 137.967 3.07406 136.909 2.74854C136.4 2.58578 135.607 2.5044 134.569 2.5044V1.52783L134.589 1.54818ZM110.257 18.8415C110.602 18.8415 110.887 18.8415 111.131 18.8415C111.376 18.8415 111.579 18.8415 111.742 18.8415C115.18 18.8415 117.764 18.1091 119.493 16.6442C121.243 15.1794 122.118 13.3076 122.118 11.029C122.118 8.75033 121.406 7.00065 120.002 5.61719C118.598 4.23373 116.726 3.52165 114.427 3.52165C113.41 3.52165 112.027 3.68441 110.257 4.03028V18.8211V18.8415ZM135.79 37.1113H126.187L114.02 20.4894C113.125 20.5098 112.393 20.5301 111.823 20.5301C111.599 20.5301 111.355 20.5301 111.091 20.5301C110.826 20.5301 110.562 20.5301 110.257 20.4894V30.8247C110.257 33.0627 110.521 34.4461 111.009 34.9955C111.681 35.7686 112.698 36.1551 114.02 36.1551H115.424V37.1317H100.023V36.1551H101.366C102.892 36.1551 103.97 35.6669 104.621 34.6903C104.987 34.141 105.191 32.8592 105.191 30.8247V7.8348C105.191 5.59685 104.947 4.21338 104.458 3.66406C103.766 2.89095 102.729 2.5044 101.386 2.5044H100.043V1.52783H113.146C116.97 1.52783 119.778 1.81266 121.589 2.36198C123.399 2.9113 124.946 3.9082 126.207 5.39339C127.468 6.87858 128.099 8.62826 128.099 10.6831C128.099 12.86 127.387 14.7725 125.943 16.3797C124.498 17.987 122.281 19.1263 119.249 19.7774L126.675 29.9906C128.364 32.3303 129.829 33.8968 131.049 34.6699C132.27 35.4227 133.857 35.9313 135.83 36.1348V37.1113H135.79ZM77.2772 3.48096V17.5394H85.1711C87.226 17.5394 88.5891 17.2342 89.2808 16.6239C90.1963 15.8101 90.705 14.4063 90.827 12.3718H91.8036V24.7416H90.827C90.5829 23.0122 90.3387 21.9136 90.0946 21.405C89.7691 20.7946 89.2605 20.3063 88.528 19.9605C87.7956 19.6146 86.697 19.4315 85.1915 19.4315H77.2976V31.1502C77.2976 32.7168 77.379 33.673 77.501 34.0189C77.6434 34.3648 77.8876 34.6292 78.2538 34.8327C78.5997 35.0362 79.2914 35.1175 80.2679 35.1175H86.3715C88.406 35.1175 89.8912 34.9751 90.7863 34.6903C91.7019 34.4055 92.5971 33.8561 93.4312 33.0423C94.5298 31.964 95.6488 30.3161 96.7881 28.1392H97.8461L94.7536 37.0503H67.0437V36.0738H68.3254C69.1595 36.0738 69.9733 35.8703 70.7261 35.4634C71.2958 35.1786 71.6823 34.7717 71.8858 34.202C72.0892 33.6323 72.191 32.493 72.191 30.7637V7.73308C72.191 5.47477 71.9672 4.09131 71.4992 3.56234C70.8685 2.87061 69.8106 2.52474 68.3254 2.52474H67.0437V1.54818H94.7536L95.1605 9.34034H94.1229C93.7567 7.46859 93.3498 6.18685 92.9022 5.49512C92.4546 4.80339 91.7832 4.25407 90.9084 3.88786C90.1963 3.62337 88.9553 3.5013 87.1649 3.5013H77.2976L77.2772 3.48096ZM64.1954 1.54818L64.6023 9.88965H63.585C63.4019 8.42481 63.1374 7.36687 62.7915 6.73617C62.2422 5.71892 61.5098 4.98649 60.6146 4.49821C59.6991 4.00993 58.4987 3.76579 57.0135 3.76579H51.9476V30.9468C51.9476 33.1237 52.1918 34.4868 52.6597 35.0362C53.3311 35.7686 54.3687 36.1348 55.7725 36.1348H57.0135V37.1113H41.7751V36.1348H43.0568C44.5827 36.1348 45.661 35.6872 46.2917 34.7717C46.6782 34.2223 46.8817 32.9406 46.8817 30.9468V3.76579H42.5482C40.8799 3.76579 39.6795 3.88786 38.9675 4.132C38.0519 4.45752 37.2585 5.10856 36.6074 6.04444C35.9564 7.00065 35.5698 8.26205 35.4478 9.86931H34.4509L34.8781 1.52783H64.2157L64.1954 1.54818ZM10.9727 3.48096V17.5394H18.8665C20.9214 17.5394 22.2845 17.2342 22.9762 16.6239C23.8918 15.8101 24.4004 14.4063 24.5225 12.3718H25.499V24.7416H24.5225C24.2783 23.0122 24.0342 21.9136 23.7901 21.405C23.4645 20.7946 22.9559 20.3063 22.2235 19.9605C21.4911 19.6146 20.3924 19.4315 18.8869 19.4315H10.993V31.1502C10.993 32.7168 11.0744 33.673 11.1965 34.0189C11.3389 34.3648 11.583 34.6292 11.9289 34.8327C12.2747 35.0362 12.9665 35.1175 13.943 35.1175H20.0466C22.0811 35.1175 23.5663 34.9751 24.4614 34.6903C25.377 34.4055 26.2518 33.8561 27.1063 33.0423C28.2049 31.964 29.3239 30.3161 30.4632 28.1392H31.5212L28.4287 37.0503H0.71875V36.0738H2.00049C2.83463 36.0738 3.64844 35.8703 4.40121 35.4634C4.97087 35.1786 5.35742 34.7717 5.56087 34.202C5.76432 33.6323 5.86605 32.493 5.86605 30.7637V7.73308C5.86605 5.47477 5.64226 4.09131 5.17432 3.56234C4.54362 2.87061 3.48568 2.52474 2.00049 2.52474H0.71875V1.54818H28.4287L28.8356 9.34034H27.798C27.4318 7.46859 27.0249 6.18685 26.5773 5.49512C26.1297 4.80339 25.4583 4.25407 24.5835 3.88786C23.8714 3.62337 22.6304 3.5013 20.84 3.5013H10.9727V3.48096Z"
+                fill="#B04B85"
+              />
+              <path
+                d="M224.035 52.0645V45.1563C224.035 44.8834 224.208 44.7398 224.552 44.7398H225.917C226.19 44.7398 226.376 44.8547 226.477 45.0988L227.611 49.4793H227.698L228.76 45.0988C228.861 44.8547 229.048 44.7398 229.32 44.7398H230.714C231.03 44.7398 231.188 44.869 231.188 45.1419V52.0501H229.823V46.3627H229.708L228.516 50.4559C228.401 50.7575 228.215 50.9011 227.942 50.9011H227.41C227.137 50.9011 226.922 50.7575 226.793 50.4703L225.543 46.3914H225.4V52.0645H224.035ZM223.188 45.9462H219.583C219.497 45.9462 219.439 46.0324 219.439 46.1904V47.8707H222.326V48.991H219.439V50.6857C219.439 50.8437 219.482 50.9155 219.583 50.9155H223.159V52.007L219.583 52.0788C218.578 52.0788 218.075 51.6049 218.075 50.6713V46.1904C218.075 45.2425 218.592 44.7541 219.583 44.7541L223.188 44.826V45.9318V45.9462ZM217.285 44.7541V45.9318H215.246V52.0788H213.867V45.9318H211.669V44.7541H217.271H217.285ZM210.779 44.869V45.9606H208.582C207.806 45.9462 207.404 46.0898 207.404 46.3771V47.0952C207.433 47.3393 207.705 47.5404 208.251 47.684L209.17 47.9569C210.406 48.2729 211.023 48.8761 211.023 49.7665V50.341C211.023 51.5043 210.233 52.0932 208.653 52.0932L206.14 51.9926V50.8868L208.596 50.9155C209.271 50.9155 209.63 50.7288 209.644 50.341V49.7665C209.644 49.4936 209.357 49.2782 208.768 49.1202L207.705 48.7755C206.643 48.4596 206.083 47.8994 206.025 47.1095V46.3771C206.025 45.2999 206.872 44.7541 208.582 44.7541L210.779 44.869ZM201.271 44.7685L202.822 48.3447H202.707L204.33 44.7685H205.795L203.44 49.6947V52.0932H202.018V49.6947L199.749 44.7685H201.271ZM199.06 44.869V45.9606H196.862C196.087 45.9462 195.684 46.0898 195.684 46.3771V47.0952C195.713 47.3393 195.986 47.5404 196.532 47.684L197.451 47.9569C198.686 48.2729 199.304 48.8761 199.304 49.7665V50.341C199.304 51.5043 198.514 52.0932 196.934 52.0932L194.421 51.9926V50.8868L196.876 50.9155C197.551 50.9155 197.911 50.7288 197.925 50.341V49.7665C197.925 49.4936 197.638 49.2782 197.049 49.1202L195.986 48.7755C194.923 48.4596 194.363 47.8994 194.306 47.1095V46.3771C194.306 45.2999 195.153 44.7541 196.862 44.7541L199.06 44.869ZM191.419 44.7541V45.9318H189.379V52.0788H188.001V45.9318H185.803V44.7541H191.405H191.419ZM178.996 52.0645V45.1563C178.996 44.8834 179.168 44.7398 179.498 44.7398H180.863C181.136 44.7398 181.322 44.869 181.423 45.1132L183.333 50.8868H183.462V44.7685H184.798V51.691C184.798 51.9496 184.626 52.0788 184.295 52.0788H182.945C182.672 52.0788 182.471 51.9352 182.342 51.648L180.489 46.2191H180.346V52.0788H178.981L178.996 52.0645ZM178.148 45.9462H174.543C174.457 45.9462 174.4 46.0324 174.4 46.1904V47.8707H177.287V48.991H174.4V50.6857C174.4 50.8437 174.443 50.9155 174.543 50.9155H178.12V52.007L174.543 52.0788C173.538 52.0788 173.035 51.6049 173.035 50.6713V46.1904C173.035 45.2425 173.538 44.7541 174.543 44.7541L178.148 44.826V45.9318V45.9462ZM172.245 44.7541V45.9318H170.206V52.0788H168.827V45.9318H166.63V44.7541H172.231H172.245ZM165.739 44.869V45.9606H163.542C162.766 45.9462 162.379 46.0898 162.379 46.3771V47.0952C162.407 47.3393 162.68 47.5404 163.226 47.684L164.145 47.9569C165.38 48.2729 165.998 48.8761 165.998 49.7665V50.341C165.998 51.5043 165.208 52.0932 163.628 52.0932L161.115 51.9926V50.8868L163.571 50.9155C164.26 50.9155 164.605 50.7288 164.619 50.341V49.7665C164.619 49.4936 164.332 49.2782 163.743 49.1202L162.68 48.7755C161.617 48.4596 161.057 47.8994 161 47.1095V46.3771C161 45.2999 161.847 44.7541 163.556 44.7541L165.754 44.869H165.739ZM153.876 44.7685L155.427 48.3447H155.313L156.935 44.7685H158.4L156.045 49.6947V52.0932H154.623V49.6947L152.354 44.7685H153.876ZM149.094 49.2782H148.017V52.0788H146.652V44.7398H149.884C151.334 44.7398 152.052 45.501 152.052 47.009C152.009 48.4021 151.507 49.1346 150.559 49.192L152.11 52.0788H150.602L149.108 49.2782H149.094ZM149.711 48.1436C150.372 48.1436 150.688 47.7558 150.688 46.9946C150.688 46.2334 150.343 45.8744 149.639 45.8744H148.017V48.1436H149.711ZM143.421 49.2208L142.444 46.2622H142.315L141.324 49.2208H143.421ZM144.397 52.0645L143.808 50.3985H140.936L140.333 52.0645H138.968L141.223 45.3143C141.353 44.9265 141.582 44.7398 141.941 44.7398H142.789C143.133 44.7398 143.378 44.9265 143.507 45.3143L145.762 52.0645H144.397ZM132.376 52.0501V45.1419C132.376 44.869 132.549 44.7254 132.879 44.7254H134.243C134.516 44.7254 134.703 44.8547 134.803 45.0988L136.714 50.8724H136.843V44.7541H138.179V51.6767C138.179 51.9352 138.006 52.0645 137.676 52.0645H136.326C136.053 52.0645 135.852 51.9208 135.723 51.6336L133.87 46.2047H133.726V52.0645H132.362L132.376 52.0501ZM127.967 45.8744C127.22 45.8744 126.861 46.5638 126.861 47.9569V48.8473C126.861 50.2405 127.235 50.9299 127.967 50.9299H128.656C129.375 50.9299 129.734 50.2405 129.734 48.8473V47.9569C129.734 46.5638 129.375 45.8744 128.656 45.8744H127.967ZM128.613 44.7254C130.294 44.7254 131.127 45.7882 131.127 47.9138V48.8617C131.127 50.9729 130.294 52.0357 128.613 52.0357H127.981C126.301 52.0357 125.454 50.9729 125.454 48.8617V47.9138C125.454 45.7882 126.287 44.7254 127.981 44.7254H128.613ZM121.734 49.2638H120.657V52.0645H119.292V44.7254H122.524C123.974 44.7254 124.692 45.4866 124.692 46.9946C124.649 48.3878 124.147 49.1202 123.199 49.1777L124.75 52.0645H123.242L121.748 49.2638H121.734ZM122.351 48.1292C123.012 48.1292 123.328 47.7415 123.328 46.9803C123.328 46.2191 122.983 45.86 122.28 45.86H120.657V48.1292H122.351ZM114.883 45.8744C114.136 45.8744 113.777 46.5638 113.777 47.9569V48.8473C113.777 50.2405 114.151 50.9299 114.883 50.9299H115.573C116.291 50.9299 116.65 50.2405 116.65 48.8473V47.9569C116.65 46.5638 116.291 45.8744 115.573 45.8744H114.883ZM115.529 44.7254C117.21 44.7254 118.043 45.7882 118.043 47.9138V48.8617C118.043 50.9729 117.21 52.0357 115.529 52.0357H114.898C113.217 52.0357 112.384 50.9729 112.384 48.8617V47.9138C112.384 45.7882 113.217 44.7254 114.898 44.7254H115.529ZM111.896 51.8059C111.063 51.9352 110.215 52.007 109.339 52.0357C107.573 52.0357 106.682 50.815 106.682 48.3878C106.682 45.9606 107.573 44.7254 109.339 44.7254C110.215 44.7541 111.063 44.826 111.896 44.9409V46.0611C111.034 45.9606 110.187 45.9175 109.368 45.9031C108.478 45.9031 108.032 46.7361 108.032 48.4021C108.032 50.0681 108.478 50.9011 109.368 50.9011C110.187 50.9011 111.034 50.8293 111.881 50.7288V51.8203L111.896 51.8059ZM103.336 45.8457H100.88C99.9897 45.8457 99.5013 46.5925 99.3865 48.0718V48.8617C99.3865 50.1687 99.8748 50.858 100.837 50.9586H102.201V48.9335H100.938V47.8851H103.523V52.0501H100.808C98.9556 52.0501 98.0364 50.9873 98.0364 48.8617V48.0718C98.1657 45.8457 99.1136 44.7254 100.894 44.7254L103.322 44.8116V45.8313L103.336 45.8457ZM91.1857 52.0357V45.1276C91.1857 44.8547 91.358 44.7111 91.6884 44.7111H93.0528C93.3256 44.7111 93.5124 44.8403 93.6129 45.0845L95.523 50.858H95.6523V44.7398H96.988V51.6623C96.988 51.9208 96.8156 52.0501 96.4853 52.0501H95.1353C94.8624 52.0501 94.6613 51.9065 94.5321 51.6192L92.6937 46.1904H92.5501V52.0501H91.1857V52.0357ZM89.692 44.7254V52.0501H88.3276V44.7254H89.692ZM87.4803 44.7254V45.9031H85.4408V52.0501H84.0621V45.9031H81.8647V44.7254H87.4659H87.4803ZM76.8667 44.7254V49.4793C76.8667 50.3985 77.2688 50.8724 78.0731 50.8724H78.2454C79.0928 50.8724 79.5093 50.4128 79.5093 49.4793V44.7254H80.8737V49.4793C80.8737 51.1884 79.9976 52.0357 78.2454 52.0357H78.0731C76.3496 52.0357 75.4879 51.1884 75.4879 49.4793V44.7254H76.8667ZM71.3229 44.7254V50.1256C71.3229 50.6139 71.3229 50.858 71.3516 50.858H74.6549V52.0357H71.3516C70.4037 52.0357 69.9298 51.4038 69.9298 50.1256V44.7254H71.3229ZM69.1398 45.9175H65.535C65.4488 45.9175 65.3913 46.0036 65.3913 46.1616V47.842H68.2781V48.9622H65.3913V50.657C65.3913 50.815 65.4344 50.8868 65.535 50.8868H69.1111V51.9783L65.535 52.0501C64.5296 52.0501 64.0269 51.5761 64.0269 50.6426V46.1616C64.0269 45.2137 64.5296 44.7254 65.535 44.7254L69.1398 44.7972V45.9031V45.9175ZM60.4508 44.8403V45.9318H58.2534C57.4778 45.9175 57.09 46.0611 57.09 46.3483V47.0664C57.1188 47.3106 57.3916 47.5117 57.9374 47.6553L58.8566 47.9282C60.0917 48.2441 60.7093 48.8473 60.7093 49.7378V50.3123C60.7093 51.4756 59.9194 52.0645 58.3395 52.0645L55.8262 51.9639V50.858L58.2821 50.8868C58.9715 50.8868 59.3162 50.7001 59.3305 50.3123V49.7378C59.3305 49.4649 59.0433 49.2495 58.4544 49.0915L57.3916 48.7468C56.3288 48.4308 55.7687 47.8707 55.7113 47.0808V46.3483C55.7113 45.2712 56.5586 44.7254 58.2677 44.7254L60.4651 44.8403H60.4508ZM50.4117 44.7254V49.4793C50.4117 50.3985 50.8138 50.8724 51.6181 50.8724H51.7904C52.6234 50.8724 53.0543 50.4128 53.0543 49.4793V44.7254H54.4187V49.4793C54.4187 51.1884 53.5426 52.0357 51.7904 52.0357H51.6181C49.8946 52.0357 49.0329 51.1884 49.0329 49.4793V44.7254H50.4117ZM40.4587 52.0357V45.1276C40.4587 44.8547 40.6311 44.7111 40.9757 44.7111H42.3401C42.613 44.7111 42.7997 44.826 42.9003 45.0701L44.0349 49.4506H44.121L45.1838 45.0701C45.2844 44.826 45.4711 44.7111 45.744 44.7111H47.1371C47.4531 44.7111 47.611 44.8403 47.611 45.1132V52.0214H46.2466V46.334H46.1317L44.9397 50.4272C44.8248 50.7288 44.6381 50.8724 44.3652 50.8724H43.8338C43.5609 50.8724 43.3455 50.7288 43.2162 50.4415L41.9667 46.3627H41.8231V52.0357H40.4587ZM38.965 44.7254V52.0501H37.6007V44.7254H38.965ZM33.3782 44.7254V50.1256C33.3782 50.6139 33.3782 50.858 33.4069 50.858H36.7102V52.0357H33.4069C32.459 52.0357 31.9707 51.4038 31.9707 50.1256V44.7254H33.3638H33.3782ZM27.6333 45.8744C26.8865 45.8744 26.5275 46.5638 26.5275 47.9569V48.8473C26.5275 50.2405 26.9009 50.9299 27.6333 50.9299H28.3227C29.0408 50.9299 29.3999 50.2405 29.3999 48.8473V47.9569C29.3999 46.5638 29.0408 45.8744 28.3227 45.8744H27.6333ZM28.2796 44.7254C29.96 44.7254 30.793 45.7882 30.793 47.9138V48.8617C30.793 50.9729 29.9456 52.0357 28.2796 52.0357H27.6477C25.9673 52.0357 25.1343 50.9729 25.1343 48.8617V47.9138C25.1343 45.7882 25.9673 44.7254 27.6477 44.7254H28.2796ZM21.4002 49.2638H20.323V52.0645H18.9586V44.7254H22.1901C23.6407 44.7254 24.3588 45.4866 24.3588 46.9946C24.3157 48.3878 23.813 49.1202 22.8651 49.1777L24.4162 52.0645H22.9082L21.4146 49.2638H21.4002ZM22.0178 48.1292C22.6784 48.1292 22.9944 47.7415 22.9944 46.9803C22.9944 46.2191 22.6497 45.86 21.9459 45.86H20.323V48.1292H22.0178ZM18.1113 45.9175H14.5064C14.4202 45.9175 14.3628 46.0036 14.3628 46.1616V47.842H17.2495V48.9622H14.3628V50.657C14.3628 50.815 14.4058 50.8868 14.5064 50.8868H18.0825V51.9783L14.5064 52.0501C13.501 52.0501 12.9984 51.5761 12.9984 50.6426V46.1616C12.9984 45.2137 13.5154 44.7254 14.5064 44.7254L18.1113 44.7972V45.9031V45.9175ZM7.54075 44.7398L9.16367 50.7288H9.20676L10.8871 44.7398H12.3521L10.3414 51.6192C10.2408 51.9208 10.0254 52.0645 9.68071 52.0645H8.73281C8.38812 52.0645 8.15832 51.9208 8.05779 51.6049L6.1189 44.7398H7.54075ZM5.80294 45.9175H2.22677C2.1406 45.9175 2.08315 46.0036 2.08315 46.1616V47.842H4.96993V48.9622H2.08315V50.657C2.08315 50.815 2.12624 50.8868 2.22677 50.8868H5.80294V51.9783L2.22677 52.0501C1.22142 52.0501 0.71875 51.5761 0.71875 50.6426V46.1616C0.71875 45.2137 1.22142 44.7254 2.22677 44.7254L5.83166 44.7972V45.9031L5.80294 45.9175Z"
+                fill="#898A8A"
+              />
+            </svg>
+            <h3 className="text-appear-anim-delayed font-medium my-4 w-full text-xl md:text-2xl xl:text-3xl md:my-6 xl:mt-8 xl:mb-9 2xl:text-[34px]">
+              Unblock with Confidence with proprietary{' '}
+              <span className="text-[#F78E28]">WavFlo open Cell design</span>{' '}
+              and <span className="text-[#F78E28]">V2V S-Connectors</span>
+            </h3>
+            <MasterBtn
+              type="button"
+              color="orange"
+              text="Know More"
+              size="base"
+              extraClasses="text-appear-anim-delayed"
+              onClick={() => {
+                navigate('/products/stents/eternia')
+              }}
+            />
+          </div>
+        </div>
+      </SwiperSlide> */}
+            </Swiper>
+
+            {/* Carousel buttons */}
+            <div className="items-center justify-between hidden w-full h-full lg:flex d">
+              <CarouselBtn
+                activeIndex={0}
+                color="black"
+                onClick={() => {}}
+                index={5}
+                text="Move to previous slide"
+                size="base"
+                type="button"
+                extraClasses={
+                  extraClasses +
+                  'banner-swiper-prev absolute z-10 inset-0 top-1/2 h-fit w-fit left-0 translate-x-[60%] xsl:translate-x-[100%] 2xl:translate-x-[200%] !border-1'
+                }
+              />
+              <CarouselBtn
+                activeIndex={0}
+                color="black"
+                onClick={() => {}}
+                index={5}
+                text="Move to next slide"
+                size="base"
+                type="button"
+                isRotated
+                extraClasses={
+                  extraClasses +
+                  'banner-swiper-next absolute z-10 inset-0 top-1/2 h-fit w-fit left-[100%] -translate-x-[160%] xsl:-translate-x-[200%] 2xl:-translate-x-[300%] !border-1'
+                }
+              />
+            </div>
+          </>
+        )}
+      </section>
+    </>
+  )
+}
+
+// Old banner 2
+{
+  /* <div className="absolute inset-0">
+        {isMobile ? (
+          <div>
+            <img
+              src={mobilePoster}
+              alt="Innvolution care"
+              className="object-cover object-right-bottom w-full h-screen min-h-full"
+            />
+          </div>
+        ) : (
+          <video
+            playsInline
+            autoPlay
+            muted
+            loop
+            className="object-cover w-full h-full"
+            style={{ objectPosition: ' center bottom' }}
+            poster={desktopPoster}
+            aria-hidden
+            aria-label="banner-background"
+          >
+            <source src={videoBg} />
+          </video>
+        )}
+      </div>
+
+      <div className="flex flex-col items-center justify-center h-full mx-auto 2xl:max-w-6xl xl:max-w-5xl lg:gap-x-12">
+        <div className="flex flex-col items-center justify-center mx-auto lg:mt-20 xl:mt-12 2xl:mt-6">
+          <h6 className="relative text-center text-appear-anim font-regular textwrapper ">
+            Where innovation finds its purpose
+          </h6>
+          <h1 className="font-medium text-[3rem] lg:text-[3.5rem] xl:text-[4rem] 2xl:text-[4.8rem] font-regular tracking-wide leading-tight pt-1 md:pt-3">
+            <div className="flex items-center text-black ">
+              <span className="text-appear-anim relative leading-none text-[#3F1D00] font-bold">
+                5,00,000
+              </span>
+              <span className="text-appear-anim relative mb-2 2xl:mb-1 text-[#3F1D00]">
+                +
+              </span>
+            </div>
+          </h1>
+          <span className="text-appear-anim relative text-[1.5rem] 2xl:text-[1.75rem] font-regular text-black leading-tight text-center ">
+            lives touched with cardiac{' '}
+            <br className="md:hidde min-[800px]:block xl:hidden" /> care
+            solutions
+          </span>
+          <div className="text-appear-anim-delayed z-100 relative pt-12 grid grid-cols-[auto_auto_auto] gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:pt-16 place-content-center 2xl:pt-20 px-3">
+            <img
+              src={GreatPlaceToWork}
+              alt="Great Place To Work award"
+              className="w-auto h-20 sm:h-24 md:h-28 xl:h-32 2xl:h-36"
+            />
+            <img
+              src={frostAndSullivan}
+              alt="Frost & Sullivan - Company of the Year award"
+              className="w-auto h-16 my-auto sm:h-20 xl:h-24 2xl:h-28 "
+            />
+            <img
+              src={bestBrands}
+              alt="Best Brands award 2023"
+              className="w-auto h-20 sm:h-24 md:h-28 xl:h-32 2xl:h-36 "
+            />
+          </div>
+        </div>
+      </div>
+
+      <button
+        onClick={scrollHandler}
+        aria-label="Explore more"
+        className="absolute bottom-0 -translate-x-1/2 rounded-t-full z-100 left-1/2 w-fit outline-white outline-offset-0"
+      >
+        <img
+          src={button}
+          alt="Explore more"
+          className="w-auto h-16 mx-auto transition-all duration-300 2xl:h-20 hover:scale-110"
+        />
+      </button> */
+}
+
+// Old banner 1
+{
+  /* <section className="h-screen overflow-hidden relative  bg-orange min-h-[600px] max-h-[700px] lg:max-h-[none]">
+  <div className="absolute inset-0">
+    {isMobile ? (
+      <div>
+        <img
+          src={mobilePoster}
+          alt="Innvolution care"
+          className="object-cover object-right-bottom w-full h-screen min-h-full"
+        />
+      </div>
+    ) : (
+      <video
+        playsInline
+        autoPlay
+        muted
+        loop
+        className="object-cover w-full h-full"
+        style={{ objectPosition: ' center bottom' }}
+        poster={desktopPoster}
+        aria-label="banner-background"
+      >
+        <source src={videoBg} />
+      </video>
+    )}
+  </div>
+
+  <div className="flex-col items-center justify-center h-full mx-auto 2xl:max-w-6xl xl:max-w-5xl md:flex-row sm:flex lg:gap-x-12 md:justify-between">
+    <div className="flex flex-col items-center justify-center pb-16 md:mr-6 lg:mr-0 lg:w-min md:pl-10 shrin pt-44 md:pb-0 md:pt-0 md:items-start text-wrapper">
+      <h6 className="home-banner-title opacity-0 translate-y-[16px] scale-[0.98] font-regular text-wrapper text-center md:text-left">
+        Where innovation finds its purpose
+      </h6>
+      <div className=" home-banner-stat opacity-0 translate-y-[16px] scale-[0.98] font-medium text-[3rem] lg:text-[3.5rem] xl:text-[4rem] 2xl:text-[4.8rem] font-regular tracking-wide leading-tight pt-1 md:pt-3">
+        <div className="flex items-center text-black ">
+          <span className="leading-none text-[#3F1D00] font-bold">
+            5,00,000
+          </span>
+          <span className="mb-2 2xl:mb-1 text-[#3F1D00]">+</span>
+        </div>
+      </div>
+      <span className=" home-banner-subtitle whitespace-nowrap opacity-0 translate-y-[16px] scale-[0.98] text-[1.5rem] lg:text-[1.75rem] font-regular text-black text-wrapper md:text-left leading-tight text-center ">
+        lives touched with cardiac{' '}
+        <br className="md:hidde min-[800px]:block 2xl:hidden" /> care solutions
+      </span>
+    </div>
+
+    <div className="items-center hidden w-1 h-full opacity-0 md:flex home-banner-divider">
+      <img src={divider} alt="divider line" aria-hidden />
+    </div>
+
+    <div className="grid opacity-0 place-content-center md:ml-7 lg:ml-0 home-banner-award ">
+      <img
+        src={logo}
+        alt="Frost and Sullivan logo"
+        className="px-3 md:pr-12 md:pl-0"
+      />
+    </div>
+  </div>
+</section> */
+}

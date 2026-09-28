@@ -1,0 +1,36 @@
+/*   ==========================================       banner     ============================================================= */
+
+
+.careers-wrapper .banner-wrapper h5 {
+  animation: slideandappear 700ms ease-in-out forwards;
+}
+
+.careers-wrapper .banner-wrapper h2,
+.careers-wrapper .banner-wrapper h1,
+.careers-wrapper .banner-wrapper h3 {
+  animation: slideandappear 700ms ease-in-out forwards;
+  animation-delay: 200ms;
+}
+
+/* Vision */
+.career-vision {
+  background: url('../../assets/careers/vision/vision-bg.jpg'),
+    linear-gradient(0deg, #220F00 0%, rgba(246, 154, 77, 0.26) 146.29%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+@media (max-width: 1023px) {
+  .vision-card-custom-border:nth-of-type(even) {
+    border: 1px solid transparent;
+    border-image: url('../../assets/careers/vision/border-horizontal.svg') 15 fill;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vision-card-custom-border {
+    border-left: 3px solid transparent;
+    border-image: url('../../assets/careers/vision/border.svg') 15 fill;
+  }
+}

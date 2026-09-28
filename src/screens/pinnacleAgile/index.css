@@ -1,0 +1,16 @@
+.subfooter-wrapper-agile {
+  background-image: url('assets/bg-overlay/ellipse-bg.webp'),
+    linear-gradient(180deg, #2660dd 0%, #084de1 100%),
+    linear-gradient(164deg, #f69a4d 11.1%, #ff7400 128.9%);
+  background-position: top 20px center, top center, top center;
+  background-size: 100% 100%, cover, cover;
+  background-repeat: no-repeat;
+}
+
+.user-experience-agile {
+  background: url('assets/bg-overlay/ellipse-bg.webp'),
+    linear-gradient(110deg, #f69a4d 36.83%, #ff7400 77.51%);
+  background-size: cover, cover;
+  background-position: center top, left top;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,41 @@
+.banner-image {
+  background-image: url('assets/stents/landingPage/banner-bg.png');
+}
+
+.card-white-linear {
+  background: linear-gradient(
+    180deg,
+    #ecf1f1 -23.77%,
+    rgba(208, 208, 208, 0) 100%
+  );
+}
+
+.right-border-orange {
+  box-shadow: 5px 9px 10px 0px #ffd5b2;
+}
+
+.dark-background-gradient {
+  background: linear-gradient(180deg, #10171d 0%, #272e38 100%);
+}
+
+.stents-swiper .swiper-pagination-bullet {
+  background-color: #c3c3c38a;
+  width: 48px;
+  height: 8px;
+  border-radius: 1rem;
+}
+
+.stents-swiper .swiper-pagination-bullet-active {
+  background-color: #fff;
+}
+
+.footprint-table td,
+.footprint-table th {
+  border: 1px solid #c3c3c3;
+}
+
+@media (max-width: 1279px) {
+  .banner-image {
+    background-image: url('assets/stents/landingPage/banner-bg-mobile.png');
+  }
+}

@@ -1,0 +1,29 @@
+.form {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  overscroll-behavior: contain;
+  @apply py-8 px-10 rounded-2xl w-[450px]
+}
+
+.inputForm {
+  @apply border-[#ecedec] border-1 rounded-lg h-[50px] flex items-center pl-3 transition-colors
+}
+
+.inputForm:focus-within {
+  border: 1.5px solid orange;
+}
+
+.input {
+  @apply ml-2.5 rounded-lg border-none w-11/12 h-full
+}
+
+.input:focus {
+  outline: none;
+}
+
+.button-submit {
+  @apply mt-2.5 bg-[#151717] border-none text-white text-base font-medium rounded-lg h-12 w-full cursor-pointer
+}
+
+.button-submit:hover {
+  background-color: #252727;
+}

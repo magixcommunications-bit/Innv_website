@@ -1,0 +1,27 @@
+.innovation-wrapper .feature-motion-wrapper h4 {
+    animation: appear 300ms ease-in-out forwards;
+    animation-delay: 100ms;
+  }
+  
+  .innovation-wrapper .feature-motion-wrapper .left {
+    animation: appear 300ms ease-in-out forwards;
+    animation-delay: 160ms;
+  }
+  
+  
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .innovation-subfooter-gradient {
+    background-image: url('assets/bg-overlay/ellipse-bg.webp'),
+      linear-gradient(164deg, #FEC89A 11.1%, #fcbb82 128.9%);
+  }

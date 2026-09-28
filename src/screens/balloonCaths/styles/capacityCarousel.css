@@ -1,0 +1,91 @@
+/* Balloon capacity carousels */
+
+.products-tab-carousel .swiper-slide {
+  height: auto !important;
+}
+
+.products-tab-carousel .capacity-carousel {
+  opacity: 0;
+}
+.products-tab-carousel .capacity-carousel-active {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
+}
+
+.products-tab-carousel .capacity-carousel-exit {
+  opacity: 1;
+}
+.products-tab-carousel .capacity-carousel-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.products-tab-carousel .capacity-carousel-image-enter {
+  filter: blur(20px);
+  opacity: 0;
+}
+.products-tab-carousel .capacity-carousel-image-enter-active {
+  opacity: 1;
+  filter: blur(0);
+  transition: all 300ms ease-in-out;
+}
+
+.products-tab-carousel .capacity-carousel-image-exit {
+  filter: blur(0);
+  opacity: 1;
+}
+.products-tab-carousel .capacity-carousel-image-exit-active {
+  transition: all 300ms ease-in-out;
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.products-tab-carousel .transition-text-wrapper :nth-child(1) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 100ms;
+}
+.products-tab-carousel .transition-text-wrapper :nth-child(2) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 150ms;
+}
+.products-tab-carousel .transition-text-wrapper :nth-child(3) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 200ms;
+}
+.products-tab-carousel .transition-text-wrapper :nth-child(4) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 250ms;
+}
+.products-tab-carousel .transition-text-wrapper :nth-child(5) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 300ms;
+}
+
+.products-tab-carousel .capacity-text-wrapper li:nth-child(1) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 200ms;
+}
+.products-tab-carousel .capacity-text-wrapper li:nth-child(2) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 250ms;
+}
+.products-tab-carousel .capacity-text-wrapper li:nth-child(3) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 300ms;
+}
+.products-tab-carousel .capacity-text-wrapper li:nth-child(4) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 350ms;
+}
+
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

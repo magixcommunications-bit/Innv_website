@@ -1,0 +1,77 @@
+.sapphire-201-carousal {
+  background: radial-gradient(
+      650% 500% at 50% 70%,
+      #9de1a52b 2.74%,
+      #f0f4f5 10.54%
+    ),
+    linear-gradient(180deg, #fff 0%, #f0f4f5 100%);
+}
+
+.sapphire-201-carousal .carousal-image-enter {
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.sapphire-201-carousal .carousal-image-enter-active {
+  opacity: 1;
+  filter: blur(0);
+  transition: all 300ms ease-in-out;
+}
+
+.sapphire-201-carousal .carousal-image-exit {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.sapphire-201-carousal .carousal-image-exit-active {
+  transition: all 300ms ease-in-out;
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.sapphire-201-carousal .carousal-text {
+  opacity: 0;
+}
+
+.sapphire-201-carousal .carousal-text-active {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
+}
+
+.sapphire-201-carousal .carousal-text-exit {
+  opacity: 1;
+}
+
+.sapphire-201-carousal .carousal-text-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.tip-entry-profile-wrapper {
+  background: linear-gradient(180deg, #10171d 0%, #272e38 100%);
+}
+
+.luricious-coating-wrapper {
+  background: radial-gradient(
+      650% 500% at 50% 70%,
+      #9de1a52b 2.74%,
+      #f0f4f5 10.54%
+    ),
+    linear-gradient(180deg, #fff 0%, #f0f4f5 100%);
+}
+
+.luricious-coating-wrapper .blue-heading {
+  background: linear-gradient(to left, #0036d6 -2.84%, #0f73ba 70.54%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.luricious-coating-wrapper .orange-heading {
+  background: linear-gradient(
+    to left,
+    rgba(246, 154, 77, 0.9) -8.52%,
+    rgba(255, 116, 0, 0.9) 80.84%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

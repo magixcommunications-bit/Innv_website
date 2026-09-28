@@ -1,0 +1,26 @@
+.salient-pointers-wrapper {
+  background: url('../assets/pinnaclePro/grid.png') no-repeat;
+  background-size: contain;
+  background-position: center top;
+}
+
+.salient-pointers-wrapper .title-active h3 {
+  animation: slideandappear 700ms ease-in-out forwards;
+}
+
+.salient-pointers-wrapper .title-active h5 {
+  animation: slideandappear 700ms ease-in-out forwards 80ms;
+}
+
+
+@keyframes slideandappear {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

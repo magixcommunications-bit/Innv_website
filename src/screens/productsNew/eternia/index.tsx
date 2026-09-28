@@ -1,0 +1,139 @@
+import React, { useLayoutEffect } from 'react'
+import Banner from '../_similarSection/banner'
+import { Specifications } from '../_similarSection/specifications'
+import bannerImage from 'assets/productsNew/eternia/eternia-top-perspective.png'
+import eterniaLogo from 'assets/productsNew/eternia/eterniaLogo.svg'
+import bgImage from 'assets/productsNew/eternia/eternia-bg.jpg'
+import InformedUs from 'organisms/informedUs'
+import StentSizes from '../_similarSection/stentSizes'
+import EterniaPrecision from './eterniaPrecision'
+import EterniaDesign from './eterniaDesign'
+import EterniaCirculation from './eterniaCirculation'
+import Subfooter from 'organisms/subFooter'
+import useFetch from 'hooks/useFetch'
+import useFetchContact from 'hooks/useFetchContact'
+import useFetchMail from 'hooks/useFetchMail'
+import stentPageIcon from '../../../assets/globals/informedUsIcons/icon stent page.svg'
+
+const actionCardsList = {
+  showReadMore: false,
+  showDownload: true,
+  showContact: true,
+  showFindMore: true,
+}
+
+const featureCardsList = [
+  {
+    title: '',
+    desc: '',
+  },
+]
+
+const specRows = [
+  { id: 1, columns: ['Design', 'Open Cell Design'] },
+  { id: 2, columns: ['Stent Material', 'L605 Cobalt Chromium'] },
+  {
+    id: 3,
+    columns: [
+      'Stent Design',
+      'Open Cell Design with Valley-to-Valley S Connectors (V2V S)',
+    ],
+  },
+  {
+    id: 4,
+    columns: [
+      'Stent Strut Width',
+      'WavFlo Struts: 65 µm and Valley-to-Valley "S" Connectors: 55 µm',
+    ],
+  },
+  { id: 5, columns: ['Guide Wire Compatibility (Max)', '0.014”(0.36 mm)'] },
+
+  { id: 6, columns: ['Polymers', 'Bio-degradable Polymers'] },
+  { id: 7, columns: ['Stent Strut thickness', '60 µm'] },
+  { id: 8, columns: ['Guiding Catheter (Inner Diameter)', '5 Fr Compatible'] },
+  { id: 9, columns: ['Crossing Profile', '1 mm (≤ 1 mm for 3.0 diameter)'] },
+  { id: 10, columns: ['Radial Strength (Force/Axial)', '1.50 N/mm'] },
+  { id: 11, columns: ['Foreshortening', 'Nearly Zero'] },
+  { id: 12, columns: ['Flexibility', 'Excellent'] },
+  { id: 13, columns: ['Drug', 'Everolimus'] },
+]
+
+const expansionRows = [
+  {
+    id: 1,
+    columns: [
+      'Nominal Diameter (mm)',
+      '2.00 - 2.25 - 2.50 - 2.75 - 3.00',
+      '3.50 - 4.00 - 4.50',
+    ],
+  },
+  { id: 2, columns: ['Number of Crowns', '6', '8'] },
+  {
+    id: 3,
+    columns: ['Post-dilatation Limit (mm)', '4.00', '5.50'],
+  },
+]
+
+export default function Eternia() {
+  useFetchContact()
+  useFetchMail()
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  return (
+    <div>
+      <Banner
+        bannerImage={bannerImage}
+        bannerClassName="md:w-4/12 w-8/12 2xl:max-w-xl xl:max-w-md lg:pb-0 pb-10"
+        bgImage={bgImage}
+        productLogo={eterniaLogo}
+        title="Unblock with Confidence!"
+        subtitle=""
+      />
+      <EterniaCirculation />
+      <EterniaDesign />
+      <EterniaPrecision />
+      <StentSizes
+        title={
+          <h4 className="font-regular">
+            <h3 className="font-medium text-orange inline">Elevate</h3> your
+            practice with{' '}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="lg:h-8 md:h-5 h-4 inline lg:mb-3 mb-1"
+              viewBox="0 0 169 28"
+              fill="none"
+            >
+              <path
+                d="M158.298 17.2464L153.841 6.77842L149.279 17.2464H158.298ZM158.848 18.655H148.685L146.902 22.7473C146.456 23.7556 146.248 24.4969 146.248 25.0011C146.248 25.3866 146.441 25.7424 146.813 26.039C147.199 26.3355 148.016 26.5283 149.279 26.6321V27.3438H141.018V26.6321C142.118 26.4393 142.816 26.1872 143.143 25.8759C143.797 25.268 144.525 24.0225 145.327 22.1542L154.569 0.832703H155.237L164.375 22.3915C165.103 24.1263 165.771 25.2531 166.38 25.7573C166.975 26.2762 167.822 26.5727 168.891 26.6321V27.3438H158.536V26.6321C159.576 26.5876 160.289 26.4096 160.66 26.1131C161.032 25.8314 161.21 25.4607 161.21 25.0455C161.21 24.4821 160.942 23.6073 160.437 22.3915L158.848 18.6698V18.655ZM139.741 26.6321V27.3438H128.493V26.6321H129.429C130.514 26.6321 131.301 26.3207 131.792 25.6979C132.104 25.2976 132.267 24.3042 132.267 22.7622V6.0074C132.267 4.70261 132.178 3.8278 132.015 3.41264C131.881 3.08644 131.614 2.81955 131.227 2.59714C130.663 2.28577 130.068 2.1375 129.444 2.1375H128.508V1.42579H139.755V2.1375H138.805C137.735 2.1375 136.962 2.44887 136.472 3.07161C136.145 3.48677 135.982 4.46537 135.982 6.0074V22.7473C135.982 24.0521 136.071 24.9269 136.234 25.3421C136.368 25.6683 136.635 25.9352 137.051 26.1576C137.601 26.469 138.195 26.6172 138.819 26.6172H139.77L139.741 26.6321ZM98.3473 1.42579H105.464L121.51 20.8643V5.91844C121.51 4.33193 121.332 3.32367 120.975 2.93817C120.5 2.40439 119.742 2.1375 118.702 2.1375H117.796V1.42579H126.933V2.1375H125.997C124.883 2.1375 124.096 2.4637 123.635 3.13092C123.353 3.54608 123.219 4.46537 123.219 5.91844V27.7589H122.521L105.211 6.89703V22.8659C105.211 24.4525 105.39 25.4459 105.732 25.8462C106.222 26.38 106.98 26.6469 108.005 26.6469H108.926V27.3586H99.7885V26.6469H100.695C101.824 26.6469 102.611 26.3207 103.087 25.6535C103.369 25.2531 103.518 24.319 103.518 22.8659V4.82122C102.76 3.94642 102.181 3.36816 101.779 3.08644C101.378 2.80472 100.814 2.53783 100.041 2.3006C99.6696 2.18198 99.0901 2.12267 98.3324 2.12267V1.41096L98.3473 1.42579ZM80.5775 14.0289C80.8301 14.0289 81.0381 14.0289 81.2164 14.0289C81.3947 14.0289 81.5433 14.0289 81.6621 14.0289C84.1731 14.0289 86.06 13.4951 87.3229 12.4276C88.6006 11.36 89.2395 9.99592 89.2395 8.33527C89.2395 6.67463 88.7195 5.39949 87.6943 4.39123C86.6692 3.38298 85.3023 2.86403 83.6233 2.86403C82.8805 2.86403 81.8701 2.98265 80.5775 3.23471V14.0141V14.0289ZM99.2239 27.3438H92.2111L83.3262 15.2299C82.6724 15.2448 82.1376 15.2596 81.7215 15.2596C81.5581 15.2596 81.3798 15.2596 81.1867 15.2596C80.9935 15.2596 80.8004 15.2596 80.5775 15.2299V22.7622C80.5775 24.3931 80.7707 25.4014 81.1273 25.8017C81.6176 26.3652 82.3604 26.6469 83.3262 26.6469H84.3514V27.3586H73.1041V26.6469H74.0847C75.1991 26.6469 75.9865 26.291 76.462 25.5793C76.7294 25.179 76.878 24.2449 76.878 22.7622V6.0074C76.878 4.37641 76.6997 3.36816 76.3431 2.96782C75.8379 2.40439 75.0802 2.12267 74.0996 2.12267H73.119V1.41096H82.6873C85.4805 1.41096 87.5309 1.61855 88.8532 2.01888C90.1756 2.41921 91.3047 3.14575 92.2259 4.22813C93.1471 5.31052 93.6077 6.58566 93.6077 8.08321C93.6077 9.66972 93.0877 11.0635 92.0328 12.2348C90.9779 13.4062 89.3584 14.2365 87.1446 14.711L92.5676 22.1542C93.8008 23.8594 94.8706 25.0011 95.762 25.5645C96.6535 26.1131 97.8124 26.4838 99.2536 26.6321V27.3438H99.2239ZM56.4933 2.83438V13.08H62.258C63.7587 13.08 64.7541 12.8576 65.2593 12.4128C65.9279 11.8197 66.2993 10.7966 66.3885 9.31387H67.1016V18.3288H66.3885C66.2102 17.0685 66.0319 16.2678 65.8536 15.8972C65.6159 15.4523 65.2444 15.0965 64.7096 14.8444C64.1747 14.5924 63.3724 14.4589 62.2729 14.4589H56.5081V22.9994C56.5081 24.1411 56.5676 24.838 56.6567 25.09C56.7607 25.3421 56.939 25.5348 57.2065 25.6831C57.459 25.8314 57.9642 25.8907 58.6774 25.8907H63.1347C64.6204 25.8907 65.705 25.7869 66.3588 25.5793C67.0274 25.3717 67.6811 24.9714 68.2903 24.3783C69.0926 23.5925 69.9097 22.3915 70.7418 20.805H71.5144L69.256 27.2993H49.0199V26.5876H49.9559C50.5651 26.5876 51.1594 26.4393 51.7091 26.1428C52.1251 25.9352 52.4074 25.6386 52.556 25.2235C52.7046 24.8083 52.7789 23.978 52.7789 22.7177V5.93326C52.7789 4.28744 52.6154 3.27919 52.2737 2.89369C51.8131 2.38956 51.0405 2.1375 49.9559 2.1375H49.0199V1.42579H69.256L69.5532 7.10461H68.7954C68.528 5.74051 68.2308 4.8064 67.904 4.30227C67.5771 3.79815 67.0868 3.39781 66.4479 3.13092C65.9279 2.93817 65.0216 2.8492 63.7141 2.8492H56.5081L56.4933 2.83438ZM46.9398 1.42579L47.237 7.50495H46.4941C46.3604 6.43739 46.1672 5.66638 45.9146 5.20673C45.5135 4.46537 44.9786 3.93159 44.3249 3.57574C43.6563 3.21988 42.7797 3.04196 41.6951 3.04196H37.9955V22.8511C37.9955 24.4376 38.1738 25.4311 38.5155 25.8314C39.0058 26.3652 39.7636 26.6321 40.7888 26.6321H41.6951V27.3438H30.5667V26.6321H31.5027C32.6171 26.6321 33.4045 26.3059 33.8651 25.6386C34.1474 25.2383 34.296 24.3042 34.296 22.8511V3.04196H31.1313C29.913 3.04196 29.0364 3.13092 28.5163 3.30885C27.8478 3.54608 27.2683 4.02055 26.7929 4.70261C26.3174 5.39949 26.0351 6.31877 25.946 7.49012H25.2179L25.53 1.41096H46.9547L46.9398 1.42579ZM8.07223 2.83438V13.08H13.837C15.3376 13.08 16.3331 12.8576 16.8382 12.4128C17.5068 11.8197 17.8783 10.7966 17.9674 9.31387H18.6806V18.3288H17.9674C17.7891 17.0685 17.6108 16.2678 17.4325 15.8972C17.1948 15.4523 16.8234 15.0965 16.2885 14.8444C15.7536 14.5924 14.9513 14.4589 13.8519 14.4589H8.08709V22.9994C8.08709 24.1411 8.14652 24.838 8.23567 25.09C8.33967 25.3421 8.51796 25.5348 8.77054 25.6831C9.02312 25.8314 9.52828 25.8907 10.2415 25.8907H14.6987C16.1845 25.8907 17.2691 25.7869 17.9228 25.5793C18.5914 25.3717 19.2303 24.9714 19.8543 24.3783C20.6567 23.5925 21.4738 22.3915 22.3059 20.805H23.0785L20.8201 27.2993H0.583984V26.5876H1.52001C2.12918 26.5876 2.72348 26.4393 3.27322 26.1428C3.68923 25.9352 3.97153 25.6386 4.1201 25.2235C4.26868 24.8083 4.34297 23.978 4.34297 22.7177V5.93326C4.34297 4.28744 4.17953 3.27919 3.83781 2.89369C3.37722 2.38956 2.60462 2.1375 1.52001 2.1375H0.583984V1.42579H20.8201L21.1172 7.10461H20.3595C20.0921 5.74051 19.7949 4.8064 19.468 4.30227C19.1412 3.79815 18.6509 3.39781 18.012 3.13092C17.492 2.93817 16.5857 2.8492 15.2782 2.8492H8.07223V2.83438Z"
+                fill="black"
+              />
+            </svg>
+            , now available in a multitude of dimensions to cater to your
+            diverse unblocking needs. Experience a new realm of possibilities
+            for superior patient care.
+          </h4>
+        }
+      />
+
+      <Specifications specRows={specRows} expansionRows={expansionRows} />
+      <InformedUs
+        title={
+          <>
+            Want to get informed <br className="min-[320px]:block hidden" />{' '}
+            about our <span className="text-orange">Eternia</span>?
+          </>
+        }
+        actionCardsList={actionCardsList}
+        featureCardsList={featureCardsList}
+        columnClasses="xl:grid-cols-3 xl:max-w-7xl"
+        fileLink="/brochures/Eternia-Brochure.pdf"
+        fileName="Eternia-Brochure"
+        productTarget="/products/stents"
+        productsIcon={stentPageIcon}
+      />
+
+      <Subfooter />
+    </div>
+  )
+}

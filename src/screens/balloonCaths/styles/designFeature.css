@@ -1,0 +1,89 @@
+/* Balloon capacity carousels */
+.balloon-design-features .swiper-slide {
+  height: auto !important;
+}
+
+.balloon-design-features .designFeatures {
+  opacity: 0;
+}
+.balloon-design-features .designFeatures-active {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
+}
+
+.balloon-design-features .designFeatures-exit {
+  opacity: 1;
+}
+.balloon-design-features .designFeatures-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.balloon-design-features .designFeatures-image-enter {
+  filter: blur(20px);
+  opacity: 0;
+}
+.balloon-design-features .designFeatures-image-enter-active {
+  opacity: 1;
+  filter: blur(0);
+  transition: all 300ms ease-in-out;
+}
+
+.balloon-design-features .designFeatures-image-exit {
+  filter: blur(0);
+  opacity: 1;
+}
+.balloon-design-features .designFeatures-image-exit-active {
+  transition: all 300ms ease-in-out;
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.balloon-design-features .transition-text-wrapper :nth-child(1) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 100ms;
+}
+.balloon-design-features .transition-text-wrapper :nth-child(2) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 150ms;
+}
+.balloon-design-features .transition-text-wrapper :nth-child(3) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 200ms;
+}
+.balloon-design-features .transition-text-wrapper :nth-child(4) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 250ms;
+}
+.balloon-design-features .transition-text-wrapper :nth-child(5) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 300ms;
+}
+
+.balloon-design-features .capacity-text-wrapper li:nth-child(1) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 200ms;
+}
+.balloon-design-features .capacity-text-wrapper li:nth-child(2) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 250ms;
+}
+.balloon-design-features .capacity-text-wrapper li:nth-child(3) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 300ms;
+}
+.balloon-design-features .capacity-text-wrapper li:nth-child(4) {
+  animation: appear 300ms ease-in-out forwards;
+  animation-delay: 350ms;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

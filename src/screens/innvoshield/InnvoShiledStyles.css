@@ -1,0 +1,39 @@
+.border-circle {
+  width: clamp(205px, 15vw, 252px);
+  height: clamp(205px, 15vw, 252px);
+}
+
+.first-circle {
+  width: clamp(195px, 14vw, 240px);
+  height: clamp(195px, 14vw, 240px);
+}
+
+.second-circle {
+  width: clamp(175px, 12vw, 215px);
+  height: clamp(175px, 12vw, 215px);
+}
+
+.third-circle {
+  width: clamp(150px, 10vw, 190px);
+  height: clamp(150px, 10vw, 190px);
+}
+
+.main-border {
+  width: clamp(262px, 17vw, 312px);
+  height: clamp(262px, 17vw, 312px);
+}
+
+.main-first {
+  width: clamp(250px, 16vw, 300px);
+  height: clamp(250px, 16vw, 300px);
+}
+
+.main-second {
+  width: clamp(225px, 15vw, 275px);
+  height: clamp(225px, 15vw, 275px);
+}
+
+.main-third {
+  width: clamp(200px, 14vw, 250px);
+  height: clamp(200px, 14vw, 250px);
+}

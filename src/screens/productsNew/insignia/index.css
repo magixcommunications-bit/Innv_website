@@ -1,0 +1,192 @@
+.insignia-banner-image {
+  background: url('../../../assets/insignia/banner.jpg');
+  background-repeat: no-repeat;
+  background-color: #f7cab5;
+}
+
+@keyframes slideandappear {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleandappear {
+  from {
+    transform: scale(0.98);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.insignia-page-wrapper .sirolimus-wrapper {
+  background: url('../../../assets/insignia/second-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+.insignia-page-wrapper .sirolimus-active h3 {
+  animation: slideandappear 700ms ease-in-out forwards;
+}
+
+.insignia-page-wrapper .sirolimus-active h6 {
+  animation: slideandappear 700ms ease-in-out forwards;
+  animation-delay: 80ms;
+}
+
+.insignia-page-wrapper .sirolimus-active .img-wrapper {
+  animation: scaleandappear 700ms ease-in-out forwards;
+}
+
+.insignia-compliance-chart {
+  background-color: #f1f5f6;
+}
+
+.insignia-page-wrapper .insignia-compliance-chart table {
+  border-collapse: separate !important;
+  border-spacing: 0;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 10px grey;
+}
+@media (max-width: 786px) {
+  .insignia-page-wrapper .insignia-compliance-chart table {
+    box-shadow: 0px 1px 1px rgba(128, 128, 128, 0.293);
+  }
+}
+
+.insignia-page-wrapper .insignia-compliance-chart table tr th:nth-child(1) {
+  position: sticky;
+  left: 0;
+}
+
+.insignia-page-wrapper
+  .insignia-compliance-chart
+  table
+  tr
+  th:nth-child(1)::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: '';
+  top: 0;
+  left: 0;
+  border-right: 2px solid #f69a4d;
+}
+
+.insignia-page-wrapper .insignia-compliance-chart table tr td:nth-child(1) {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.insignia-page-wrapper
+  .insignia-compliance-chart
+  table
+  tr
+  td:nth-child(1)::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-right: 2px solid #f69a4d;
+  content: '';
+  top: 0;
+  left: 0;
+}
+
+.capacity-wrapper {
+  background: linear-gradient(180deg, #10171d 0%, #272e38 100%);
+}
+
+.features-carousal-wrapper {
+  background: linear-gradient(0deg, #f0f4f5 0%, #f0f4f5 100%), #fff;
+}
+
+.features-wrapper .feature-img-enter {
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.features-wrapper .feature-img-enter-active {
+  opacity: 1;
+  filter: blur(0);
+  transition: all 300ms ease-in-out;
+}
+
+.features-wrapper .feature-img-exit {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.features-wrapper .feature-img-exit-active {
+  transition: all 300ms ease-in-out;
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.features-wrapper .features {
+  opacity: 0;
+}
+
+.features-wrapper .features-active {
+  opacity: 1;
+  transition: opacity 150ms ease-in-out;
+}
+
+.features-wrapper .features-exit {
+  opacity: 1;
+}
+
+.features-wrapper .features-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.dash-line {
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    transparent 50%,
+    #fff 50%,
+    #fff 100%
+  );
+  background-color: #bbbbbb;
+  background-size: 100% 10px, 100% 100%;
+  border: none;
+  background-repeat: repeat;
+}
+
+.insignia-page-wrapper .stent-specification-wrapper {
+  background: linear-gradient(to bottom, #e5e5e5, #ffe7d3);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+}
+
+.insignia-page-wrapper .stent-specification-wrapper .table-wrapper table {
+  border-collapse: separate !important;
+  border-spacing: 0;
+  border: solid #f69a4d 1px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+
+.insignia-page-wrapper .subfooter {
+  background-image: url('assets/bg-overlay/ellipse-bg.webp'),
+    linear-gradient(180deg, #0b161f 0%, #272d36 100%);
+  background-position: top 20px center, top center;
+  background-size: 100% auto, cover;
+  background-repeat: no-repeat;
+}
